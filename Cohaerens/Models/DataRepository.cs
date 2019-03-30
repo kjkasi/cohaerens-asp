@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cohaerens.Models
 {
@@ -11,12 +12,15 @@ namespace Cohaerens.Models
 
         public DataRepository(DataContext ctx) => context = ctx;
 
-        public IEnumerable<SysCom> SysComs => context.SysComs;
+        public IEnumerable<SysCom> SysComs => context.SysComs
+            .Include(p => p.Place).ToArray();
 
-        public SysCom GetSysCom(long key) => context.SysComs.Find(key);
+        public SysCom GetSysCom(long key) => context.SysComs
+            .Include(p => p.Place) .First(p => p.Id == key);
 
         public void Add(SysCom syscom)
         {
+            syscom.PlaceId = 1;
             context.SysComs.Add(syscom);
             context.SaveChanges();
         }

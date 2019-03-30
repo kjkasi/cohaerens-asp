@@ -30,6 +30,7 @@ namespace Cohaerens.Controllers
 
         public IActionResult UpdateSysCom(long key)
         {
+            ViewBag.Places = repository.Places;
             return View(repository.GetSysCom(key));
         }
 

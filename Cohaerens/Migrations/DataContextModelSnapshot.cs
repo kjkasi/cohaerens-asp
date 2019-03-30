@@ -43,9 +43,21 @@ namespace Cohaerens.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<long>("PlaceId");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("PlaceId");
+
                     b.ToTable("SysComs");
+                });
+
+            modelBuilder.Entity("Cohaerens.Models.SysCom", b =>
+                {
+                    b.HasOne("Cohaerens.Models.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

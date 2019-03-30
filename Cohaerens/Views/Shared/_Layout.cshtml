@@ -7,8 +7,20 @@
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>
+	<nav class="navbar navbar-expand-md fixed-top bg-dark">
+		<a class="navbar-brand" href="#">Cohaerens</a>
+
+	</nav>
+
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; 2019 - Cohaerens</p>
+		</footer>
+	</div>
+
+	<!--<script src="~/lib/jQuery/dist/jquery.js"></script>-->
+	<!--<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>-->
+	</body>
+	</html>

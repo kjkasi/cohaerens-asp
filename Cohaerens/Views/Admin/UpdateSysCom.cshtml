@@ -15,6 +15,19 @@
 		<label asp-for="Description"></label>
 		<input asp-for="Description" class="form-control" />
 	</div>
+	<div class="form-group">
+		<label asp-for="Place"></label>
+		<select class="form-control" asp-for="PlaceId">
+			@if (Model.Id == 0)
+			{
+				<option disabled selected>Choose Place</option>
+			}
+			@foreach (Place p in ViewBag.Places)
+			{
+				<option selected=@(Model.Place?.Id == p.Id) value="p.Id">@p.Name</option>
+			}
+		</select>
+	</div>
 	<div class="text-center">
 		<button class="btn btn-primary" type="submit">Save</button>
 		<a asp-action="SysCom" class="btn btn-secondary">Cancel</a>
